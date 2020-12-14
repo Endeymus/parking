@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/show.css" th:href="@{/css/show.scss}">
+</head>
+<body>
+<div class="container">
+    <h2>Уровень парковки</h2>
+    <a th:href="@{/floor/1}">1</a>
+    <a th:href="@{/floor/2}">2</a>
+    <a th:href="@{/floor/3}">3</a>
+    <a th:href="@{/floor/4}">4</a>
+    <a th:href="@{/floor/5}">5</a>
+    <a th:href="@{/floor/all}">Все датчики</a>
+</div>
+<div class="card">
+    <h1>Информация по работе с приложением</h1>
+    <h2>Для просмотра состояния парковочный мест перейдите на нужный уровень парковки.</h2>
+    <h2>Для отображения полной информации необходимо нажать на соответсвующую кнопку у датчика.</h2>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/show.css" th:href="@{/css/show.css}">
+
+</head>
+<body>
+<div class="container">
+    <h2>Уровень парковки</h2>
+    <a th:href="@{/floor/1}">1</a>
+    <a th:href="@{/floor/2}">2</a>
+    <a th:href="@{/floor/3}">3</a>
+    <a th:href="@{/floor/4}">4</a>
+    <a th:href="@{/floor/5}">5</a>
+    <a th:href="@{/floor/all}">Все датчики</a>
+</div>
+<div class="page-content">
+    <div th:each="sensor : ${sensors}">
+        <div th:switch="${sensor.isBusy()}">
+<!--            <div class="card" th:each="sensor : ${sensors}">-->
+            <div th:case="${false}" class="card border-red">
+                <div class="content">
+                    <h2 class="title" th:text="'Номер места : ' + ${sensor.getName()}"/>
+                    <p class="copy" th:text="'UUID : ' + ${sensor.getUUID()}"/>
+                    <p class="copy" th:text="'Место : ' + ${sensor.isBusy() == true ? 'Свободно' : 'Занято'}"/>
+                    <form th:action="@{/floor/redirect}" method="get" target="_blank">
+                        <button class="btn" type="submit">Устройства</button>
+                    </form>
+                </div>
+            </div>
+            <div th:case="*" class="card border-green">
+                <div class="content">
+                    <h2 class="title" th:text="'Номер места : ' + ${sensor.getName()}"/>
+                    <p class="copy" th:text="'UUID : ' + ${sensor.getUUID()}"/>
+                    <p class="copy" th:text="'Место : ' + ${sensor.isBusy() == true ? 'Свободно' : 'Занято'}"/>
+                    <form th:action="@{/floor/redirect}" method="get" target="_blank">
+                        <button class="btn" type="submit">Устройства</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
